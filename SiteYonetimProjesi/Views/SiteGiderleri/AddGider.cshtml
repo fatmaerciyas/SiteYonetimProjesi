@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.SiteGiderleri
+@{
+    ViewBag.Title = "AddGider";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddGider", "SiteGiderleri", FormMethod.Post))
+{
+    <div class="form-group  mx-3">
+        
+        <br />
+        @Html.Label("Gider")
+        @Html.TextBoxFor(x => x.Gider, new { @class = "form-control" })
+        <br />
+        @Html.Label("Gider Ücreti")
+        @Html.TextBoxFor(x => x.GiderUcreti, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firma")
+        @Html.TextBoxFor(x => x.Firma, new { @class = "form-control" })
+        <br />
+     
+        <button id="btn1" class="btn btn-info">Ekle</button>
+
+    </div>
+}
+
+
+

@@ -1,0 +1,97 @@
+﻿@using EntityLayer.Concrete
+@model List<Site>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml"; }
+
+
+
+@foreach (var item in Model)
+{
+    <h3>@item.SiteAd </h3>}
+
+<table class="table table-hover" id="tbl1">
+    <thead>
+        <tr>
+            <th>Site il</th>
+            <th>Site Adres</th>
+            <th>Isınma Türü</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>@item.SiteIl</td>
+                <td>@item.SiteAdres</td>
+                <td>@item.SiteIsinmaTuru</td>
+
+                <td><button href="/SiteYonetim/DeleteSite/@item.SiteID" id="@item.SiteID" class="btn btn-warning dltButton">Sil</button></td>
+                <td><a href="/SiteYonetim/EditSite/@item.SiteID" class="btn btn-primary">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+<a href="~/SiteYonetim/AddSite" class="btn btn-danger">Yeni Site</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> @*dltButton icin bootbox cdn'i'*@
+
+
+<script>
+    $('#tbl1').dataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+
+    $('.dltButton').click(function () {
+        var btn = $(this);
+        var id = $(this).attr('id');
+
+        console.log(id);
+
+        bootbox.confirm({
+            message: "Seçilen siteyi silmek istediğinize emin misiniz? Silinen değerler geri döndürülemez.",
+            buttons: {
+                confirm: {
+                    label: 'Evet',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'Hayır',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        url: '/SiteYonetim/DeleteSite/' + id,  /* btn.data('id'),*/
+                        success: function () {
+
+                            bootbox.alert("Silindi. Sayfayı yenilediğinizde gitmiş olacak.");
+                        },
+                        error: function () {
+                            bootbox.alert("Bir şeyler yanlış gitti");
+                        }
+                    });
+                }
+            }
+        });
+
+    });
+
+</script>
+

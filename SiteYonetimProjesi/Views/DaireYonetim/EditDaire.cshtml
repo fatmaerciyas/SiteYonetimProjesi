@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Daire
+@{
+    ViewBag.Title = "EditDaire";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditDaire", "DaireYonetim", FormMethod.Post))
+{
+    <div class="form-group mx-3">
+        <br />
+        @Html.Hidden("Daire ID")
+        @Html.TextBoxFor(x => x.DaireID, new { style = "display: none" })
+
+        @Html.Hidden("Blok ID")
+        @Html.TextAreaFor(x => x.BlokID, new { style = "display: none" })
+
+        @Html.Hidden("Site")
+        @Html.TextAreaFor(x => x.SiteID, new { style = "display: none" })
+
+        @Html.Hidden("DaireStatus")
+        @Html.TextAreaFor(x => x.DaireStatus, new { style = "display: none" })
+
+        @Html.Label("Daire No")
+        @Html.TextBoxFor(x => x.DaireNo, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kat No")
+        @Html.TextAreaFor(x => x.KatNo, new { @class = "form-control" })
+        <br />
+  
+        @Html.Label("Daire Alan")
+        @Html.TextAreaFor(x => x.DaireAlan, new { @class = "form-control" })
+        <br />
+        @Html.Label("Daire Açıklaması")
+        @Html.TextAreaFor(x => x.DaireAciklamasi, new { @class = "form-control" })
+
+        <br />
+        <button id="btn1" class="btn btn-success">Güncelle</button>
+
+    </div>
+
+}
+

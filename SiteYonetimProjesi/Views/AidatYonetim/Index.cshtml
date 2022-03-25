@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model List<Aidat>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml"; }
+
+
+<table class="table table-hover " id="tbl1">
+    <thead>
+        <tr>
+            <th>Site</th>
+            <th>Blok</th>
+            <th>DaireNo</th>
+            <th>Aidat Tarih</th>
+            <th>Ödeme Tarihi</th>
+            <th>Ödenecek Tutar</th>
+            <th>Ödenmiş Tutar</th>
+            <th>Borç</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Daire.SiteID == ViewBag.siteID)
+            {
+                if (item.Odenmis_Tutar == null)
+                {
+                    item.Odenmis_Tutar = 0;
+                }
+                var borc = @item.Odenecek_Tutar - item.Odenmis_Tutar;
+<tr>
+    <td>@item.Daire.Site.SiteAd</td>
+    <td>@item.Daire.Blok.BlokAd</td>
+    <td>@item.Daire.DaireNo</td>
+    <td>@item.AidatTarih</td>
+    <td>@item.Odeme_Tarihi</td>
+    <td>@item.Odenecek_Tutar</td>
+    <td>@item.Odenmis_Tutar</td>
+
+    <td>@borc</td>
+
+</tr>}
+
+            }
+    </tbody>
+</table>
+<br />
+<a href="~/AidatYonetim/TopluAidatEkle" class="btn btn-danger">Toplu Aidat Ataması Yap</a>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });</script>

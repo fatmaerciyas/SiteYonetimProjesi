@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.KiraciMalSahibi
+@{
+    ViewBag.Title = "AddSite";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+@using (Html.BeginForm("AddKiraciMalSahibi", "KiraciMalSahibi", FormMethod.Post))
+{
+<div class="form-group  mx-3">
+
+    @Html.Label("Blok Adı")
+    @Html.DropDownListFor(x => x.BlokID, (List<SelectListItem>)ViewBag.vlb, new { @class = "form-control" })
+    <br />
+    @Html.Label("Daire No")
+    @Html.DropDownListFor(x => x.DaireID, (List<SelectListItem>)ViewBag.vld, new { @class = "form-control" })
+    <br />
+    @Html.Label("Ad Soyad")
+    @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+    <br />
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Not (varsa)")
+    @Html.TextBoxFor(x => x.Not, new { @class = "form-control" })
+    <br />
+    @Html.Label("Durum")
+    @Html.TextBoxFor(x => x.Durumu, new { @class = "form-control" })
+
+    <button id="btn1" class="btn btn-info">Ekle</button>
+
+</div>
+
+}
+
+
+

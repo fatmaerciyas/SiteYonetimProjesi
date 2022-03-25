@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Site
+@{
+    ViewBag.Title = "AddSite";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+@using (Html.BeginForm("AddSite", "SiteYonetim", FormMethod.Post))
+{
+    <div class="form-group  mx-3">
+        <br />
+        @Html.Label("Site Adı")
+        @Html.TextBoxFor(x => x.SiteAd, new { @class = "form-control" })
+        <br />
+        @Html.Label("Site İl")
+        @Html.TextBoxFor(x => x.SiteIl, new { @class = "form-control" })
+        <br />
+        @Html.Label("Site Adresi")
+        @Html.TextBoxFor(x => x.SiteAdres, new { @class = "form-control" })
+        <br />
+        @Html.Label("Site Isınma Türü")
+        @Html.TextBoxFor(x => x.SiteIsinmaTuru, new { @class = "form-control" })
+
+
+        <button id="btn1" class="btn btn-info">Ekle</button>
+
+    </div>
+
+}
+
+
+

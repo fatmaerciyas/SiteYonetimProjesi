@@ -1,0 +1,101 @@
+﻿@using EntityLayer.Concrete
+@model List<Daire>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml"; }
+
+<h3>@ViewBag.sitead'ne ait daireler</h3>
+
+
+
+<table id="tbl1" class="table table-hover ">
+    <thead>
+        <tr>
+
+            <th>Site Adı</th>
+            <th>Blok</th>
+            <th>Daire No</th>
+            <th>Kat No</th>
+            <th>Alan</th>
+            <th>Açıklama</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>@item.Site.SiteAd</td>
+    <td>@item.Blok.BlokAd</td>
+    <td>@item.DaireNo</td>
+    <td>@item.KatNo</td>
+    <td>@item.DaireAlan</td>
+    <td>@item.DaireAciklamasi</td>
+    <td><button href="/DaireYonetim/DeleteDaire/@item.DaireID" id="@item.DaireID" name="test_name" class="btn btn-warning dltButton">Sil</button></td>
+    <td><a href="/DaireYonetim/EditDaire/@item.DaireID"class="btn btn-primary">Güncelle</a></td>
+</tr>}
+    </tbody>
+</table>
+<br />
+<a href="~/DaireYonetim/AddDaire" class="btn btn-danger">Ekle</a>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> @*dltButton icin bootbox cdn'i'*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<script>
+    $('#tbl1').dataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+
+    $('.dltButton').click(function () {
+        var btn = $(this);
+        var id = $(this).attr('id');
+        
+        console.log(id);
+
+        bootbox.confirm({
+            message: "Seçilen daireyi silmek istediğinize emin misiniz? Silinen değerler geri döndürülemez.",
+            buttons: {
+                confirm: {
+                    label: 'Evet',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'Hayır',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function  (result) {
+                if (result) {
+                    $.ajax({
+                        url: '/DaireYonetim/DeleteDaire/' + id,  /* btn.data('id'),*/
+                        success: function () {
+                            
+                            bootbox.alert("Silindi. Sayfayı yenilediğinde gitmiş olacak.");
+                        },
+                        error: function () {
+                            bootbox.alert("Bir şeyler yanlış gitti");
+                        }
+                    });
+                }
+            }
+        });
+
+    });
+
+
+</script>
+
+
+

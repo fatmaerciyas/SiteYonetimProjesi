@@ -1,0 +1,46 @@
+﻿@model EntityLayer.Concrete.Aidat
+@{
+    ViewBag.Title = "AidatBorcuSorgula";
+    Layout = "~/Views/Shared/_KiraciMalSahibiLayout.cshtml";
+}
+
+<h3>Aidat Borcunuz</h3>
+
+
+<table class="table table-bordered ">
+    <tr>
+        <th>Site</th>
+        <th>Blok</th>
+        <th>DaireNo</th>
+        <th>Aidat Tarih</th>
+        <th>Ödeme Tarihi</th>
+        <th>Ödenecek Tutar</th>
+        <th>Ödenmiş Tutar</th>
+        <th>Borç</th>
+        
+    </tr>
+
+    
+        
+        @if (Model.Odenmis_Tutar == null)
+        {
+            Model.Odenmis_Tutar = 0;
+        }
+        @{var borc = Model.Odenecek_Tutar - Model.Odenmis_Tutar; }
+    <tr>
+        <td>@Model.Daire.Site.SiteAd</td>
+        <td>@Model.Daire.Blok.BlokAd</td>
+        <td>@Model.Daire.DaireNo</td>
+        <td>@Model.AidatTarih</td>
+        <td>@Model.Odeme_Tarihi</td>
+        <td>@Model.Odenecek_Tutar</td>
+        <td>@Model.Odenmis_Tutar</td>
+
+        <td>@borc</td>
+
+    </tr>
+
+</table>
+<br />
+
+<a href="~/KiraciMalSahibiPanel/Ode" class="btn btn-danger">Aylık Öde</a>

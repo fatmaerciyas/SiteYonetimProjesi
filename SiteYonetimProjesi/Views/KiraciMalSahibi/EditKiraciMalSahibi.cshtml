@@ -1,0 +1,41 @@
+﻿@model EntityLayer.Concrete.KiraciMalSahibi
+@{
+    ViewBag.Title = "EditDaire";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditKiraciMalSahibi", "KiraciMalSahibi", FormMethod.Post))
+{
+<div class="form-group mx-3">
+    <br />
+    @Html.Hidden("Daire ID")
+    @Html.TextBoxFor(x => x.DaireID, new { style = "display: none" })
+
+    @Html.Hidden("Blok ID")
+    @Html.TextAreaFor(x => x.BlokID, new { style = "display: none" })
+
+    @Html.Hidden("Site")
+    @Html.TextAreaFor(x => x.SiteID, new { style = "display: none" })
+
+    @Html.Label("Ad Soyad")
+    @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+    <br />
+    @Html.Label("Telefon")
+    @Html.TextAreaFor(x => x.Telefon, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextAreaFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Not")
+    @Html.TextAreaFor(x => x.Not, new { @class = "form-control" })
+    <br />
+    @Html.Label("Durum")
+    @Html.TextAreaFor(x => x.Durumu, new { @class = "form-control" })
+
+    <br />
+    <button id="btn1" class="btn btn-success">Güncelle</button>
+
+</div>
+
+}
+

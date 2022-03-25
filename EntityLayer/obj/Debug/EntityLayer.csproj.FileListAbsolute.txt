@@ -1,0 +1,6 @@
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\bin\Debug\EntityLayer.dll
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\bin\Debug\EntityLayer.pdb
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\obj\Debug\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\obj\Debug\EntityLayer.dll
+C:\Users\fatma\source\repos\SiteYonetimProjesi\EntityLayer\obj\Debug\EntityLayer.pdb

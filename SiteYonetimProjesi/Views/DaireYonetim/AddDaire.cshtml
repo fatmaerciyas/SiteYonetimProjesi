@@ -1,0 +1,66 @@
+﻿@model EntityLayer.Concrete.Daire
+@{ ViewBag.Title = "AddDaire";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml"; }
+<link rel="stylesheet" href="~/Content/chosen_v1.8.7/docsupport/prism.css">
+<link rel="stylesheet" href="~/Content/chosen_v1.8.7/chosen.css">
+
+
+@using (Html.BeginForm("AddDaire", "DaireYonetim", FormMethod.Post))
+{
+<div class="form-group  mx-3">
+    <br />
+    @Html.Label("Site")
+    @Html.DropDownListFor(x => x.SiteID, (List<SelectListItem>)ViewBag.vls, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blok")
+    @Html.TextBoxFor(x => x.Blok.BlokAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Daire Numarası")
+    @Html.TextBoxFor(x => x.DaireNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kat Numarası")
+    @Html.TextBoxFor(x => x.KatNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alan")
+    @Html.TextBoxFor(x => x.DaireAlan, new { @class = "form-control" })
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.DaireAciklamasi, new { @class = "form-control" })
+    <br />
+    @*@Html.Label("Mal Sahibi (varsa)")
+        @Html.TextBoxFor(x => x.MalSahibi, new { @class = "form-control" })*@
+    @*@Html.DropDownListFor(x => x.MalSahibiID, (List<SelectListItem>)ViewBag.vlms, new { @class = "form-control" })*@
+    <br />
+    <button id="btn1" class="btn btn-info">Ekle</button>
+
+</div>}
+
+<div>
+
+    <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="1">
+        <option value=""></option>
+        @foreach (var item in ViewBag.vls)
+        {
+            <option >@item.SiteAd</option>
+        }
+        <option value="United States">United States</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="Afghanistan">Afghanistan</option>
+        <option value="Aland Islands">Aland Islands</option>
+        <option value="Albania">Albania</option>
+        <option value="Algeria">Algeria</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Andorra">Andorra</option>
+        <option value="Angola">Angola</option>
+        <option value="Anguilla">Anguilla</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="Zimbabwe">Zimbabwe</option>
+    </select>
+</div>
+      
+      
+
+<script src="~/Content/chosen_v1.8.7/docsupport/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="~/Content/chosen_v1.8.7/chosen.jquery.js" type="text/javascript"></script>
+<script src="~/Content/chosen_v1.8.7/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Content/chosen_v1.8.7/docsupport/init.js" type="text/javascript" charset="utf-8"></script>

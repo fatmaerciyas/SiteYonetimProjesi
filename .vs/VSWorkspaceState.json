@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BusinessLayer",
+    "\\BusinessLayer\\Abstract",
+    "\\BusinessLayer\\Concrete",
+    "\\DataAccessLayer",
+    "\\DataAccessLayer\\Concrete",
+    "\\DataAccessLayer\\EntityFramework",
+    "\\EntityLayer"
+  ],
+  "SelectedNode": "\\SiteYonetimProjesi.sln",
+  "PreviewInSolutionExplorer": false
+}

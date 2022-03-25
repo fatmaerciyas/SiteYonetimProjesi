@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.KiraciMalSahibi
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_KiraciMalSahibiLayout.cshtml";
+}
+
+<h3>Merhaba @Model.AdSoyad. Sisteme Hoşgeldin</h3><br/>
+<h4>Sana ait bilgiler</h4>
+
+
+<table class="table table-bordered ">
+    <tr>
+        <th>Site</th>
+        <th>Blok</th>
+        <th>DaireNo</th>
+        <th>AdSoyad</th>
+        <th>Mail</th>
+        <th>Telefon</th>
+        <th>Yoneticinin Notu</th>
+
+    </tr>
+
+    <tr>
+        <td>@Model.Daire.Site.SiteAd</td>
+        <td>@Model.Daire.Blok.BlokAd</td>
+        <td>@Model.Daire.DaireNo</td>
+        <td>@Model.AdSoyad</td>
+        <td>@Model.Mail</td>
+        <td>@Model.Telefon</td>
+        @if (@Model.Not == null)
+        {
+            <td>yok</td>
+        }
+        else
+        {
+            <td>@Model.Not</td>
+        }
+
+    </tr>
+
+</table>
+

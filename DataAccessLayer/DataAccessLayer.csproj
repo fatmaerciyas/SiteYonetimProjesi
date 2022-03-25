@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B3A444C-608D-4403-8BD2-D77192723CDB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IAidatDal.cs" />
+    <Compile Include="Abstract\IBlokDal.cs" />
+    <Compile Include="Abstract\IDaireDal.cs" />
+    <Compile Include="Abstract\IKiraciMalSahibiDal.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISiteDal.cs" />
+    <Compile Include="Abstract\ISiteGiderleriDal.cs" />
+    <Compile Include="Abstract\ISiteGiderleriSiteDal.cs" />
+    <Compile Include="Abstract\IYoneticiDal.cs" />
+    <Compile Include="Concrete\Context.cs" />
+    <Compile Include="Concrete\Repositories\GenericRepository.cs" />
+    <Compile Include="EntityFramework\EfAidatDal.cs" />
+    <Compile Include="EntityFramework\EfBlokDal.cs" />
+    <Compile Include="EntityFramework\EfDaireDal.cs" />
+    <Compile Include="EntityFramework\EfKiraciMalSahibiDal.cs" />
+    <Compile Include="EntityFramework\EfSiteDal.cs" />
+    <Compile Include="EntityFramework\EfSiteGiderleriDal.cs" />
+    <Compile Include="EntityFramework\EfSiteGiderleriSiteDal.cs" />
+    <Compile Include="EntityFramework\EfYoneticiDal.cs" />
+    <Compile Include="Migrations\202202041331585_mig_update_database.cs" />
+    <Compile Include="Migrations\202202041331585_mig_update_database.designer.cs">
+      <DependentUpon>202202041331585_mig_update_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202041334525_mig_yonetici_site.cs" />
+    <Compile Include="Migrations\202202041334525_mig_yonetici_site.designer.cs">
+      <DependentUpon>202202041334525_mig_yonetici_site.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202041633429_mig_aidat_odenecek_odenmis_tutar.cs" />
+    <Compile Include="Migrations\202202041633429_mig_aidat_odenecek_odenmis_tutar.designer.cs">
+      <DependentUpon>202202041633429_mig_aidat_odenecek_odenmis_tutar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202041636280_mig_aidat_odenecek_odenmis_tutar_allownulls.cs" />
+    <Compile Include="Migrations\202202041636280_mig_aidat_odenecek_odenmis_tutar_allownulls.designer.cs">
+      <DependentUpon>202202041636280_mig_aidat_odenecek_odenmis_tutar_allownulls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202051136319_mig_add_Odeme_tarihi.cs" />
+    <Compile Include="Migrations\202202051136319_mig_add_Odeme_tarihi.designer.cs">
+      <DependentUpon>202202051136319_mig_add_Odeme_tarihi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202051508232_mig_add_SiteGiderleri.cs" />
+    <Compile Include="Migrations\202202051508232_mig_add_SiteGiderleri.designer.cs">
+      <DependentUpon>202202051508232_mig_add_SiteGiderleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202060543389_mig_add_Siteler_SiteGiderleri.cs" />
+    <Compile Include="Migrations\202202060543389_mig_add_Siteler_SiteGiderleri.designer.cs">
+      <DependentUpon>202202060543389_mig_add_Siteler_SiteGiderleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{DB1AC768-4CD5-4B07-8D3E-CDE6200BE46A}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202041331585_mig_update_database.resx">
+      <DependentUpon>202202041331585_mig_update_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202041334525_mig_yonetici_site.resx">
+      <DependentUpon>202202041334525_mig_yonetici_site.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202041633429_mig_aidat_odenecek_odenmis_tutar.resx">
+      <DependentUpon>202202041633429_mig_aidat_odenecek_odenmis_tutar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202041636280_mig_aidat_odenecek_odenmis_tutar_allownulls.resx">
+      <DependentUpon>202202041636280_mig_aidat_odenecek_odenmis_tutar_allownulls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202051136319_mig_add_Odeme_tarihi.resx">
+      <DependentUpon>202202051136319_mig_add_Odeme_tarihi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202051508232_mig_add_SiteGiderleri.resx">
+      <DependentUpon>202202051508232_mig_add_SiteGiderleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202060543389_mig_add_Siteler_SiteGiderleri.resx">
+      <DependentUpon>202202060543389_mig_add_Siteler_SiteGiderleri.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
